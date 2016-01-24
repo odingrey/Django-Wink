@@ -1,0 +1,20 @@
+from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
+import settings
+
+from django.contrib import admin
+admin.autodiscover()
+import views
+
+
+urlpatterns = patterns('',
+        url(r'^$', views.index),
+	url(r'^main/$', views.main),
+        url(r'^admin/', admin.site.urls),
+        url(r'^login/$', 'django.contrib.auth.views.login'),
+        url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
+        url(r'^register/$', views.register),
+        url(r'^registerAPI/$', views.registerAPI),
+	url(r'^getWinkLogin/$', views.getWinkLogin),
+	url(r'^settings/$', views.settings),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
