@@ -15,6 +15,7 @@ urlpatterns = patterns('',
         url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
         url(r'^register/$', views.register),
         url(r'^registerAPI/$', views.registerAPI),
+	url(r'^changeAPI/$', views.changeAPI),
 	url(r'^getWinkLogin/$', views.getWinkLogin),
 	url(r'^settings/$', views.settings),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

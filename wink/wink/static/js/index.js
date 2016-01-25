@@ -7,11 +7,14 @@ function init(){
 	// Loads html information into the content divs
 	$( '#register' ).load( 'register' );
 	$( '#settings' ).load( 'settings' );
+	$( '#registerAPI' ).load( 'registerAPI' );
+	$( '#changeAPI' ).load( 'changeAPI' );
 
         // Adds 'linked' attributes to each button linking to their content divs
  	$( '#main_button' ).attr('linked', '#main');
 	$( '#login_button' ).attr('linked', '#login');
 	$( '#logout_button' ).attr('linked', '#logout');
+	$( '#api_change_button' ).attr('linked', '#changeAPI');
 
 	// Link menu clicking to clickMenu command
         $('#menu_left li').click(function(){clickMenu(this)});

@@ -2,6 +2,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.http import JsonResponse
 
 from django.contrib import auth
@@ -23,6 +24,7 @@ def main(request):
 	user = request.user
 	if user.is_authenticated():
 		content = {
+			'user' : user,
 			'name' : user.email,
 			'wink_username' : user.wink_username,
 			'wink_password' : user.wink_password
@@ -76,6 +78,14 @@ def registerAPI(request):
 	else:
 		form = APIForm()
 	return render(request, 'registerAPI.html', {'form': form})
+
+def changeAPI(request):
+	if request.user.is_staff:
+		content = {
+			'user': user
+		}
+		return render(request, 'changeAPI.html', content)
+	return HttpResponse(status=401)
 
 def settings(request):
 	return render(request, 'settings.html')
