@@ -9,7 +9,7 @@ class UserRegistrationForm(UserCreationForm):
 	password1 = forms.CharField(widget=forms.PasswordInput())
         password2 = forms.CharField(widget=forms.PasswordInput())
 	wink_username = forms.CharField(label = 'Wink User Name')
-	wink_password = forms.CharField(label = 'Wink Password')
+	wink_password = forms.CharField(label = 'Wink Password', widget=forms.PasswordInput)
 
 
 	class Meta:

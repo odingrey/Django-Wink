@@ -82,10 +82,20 @@ def registerAPI(request):
 def changeAPI(request):
 	if request.user.is_staff:
 		content = {
-			'user': user
+			'user': request.user
 		}
 		return render(request, 'changeAPI.html', content)
 	return HttpResponse(status=401)
 
 def settings(request):
-	return render(request, 'settings.html')
+	if request.user.is_authenticated():
+		if request.method == 'POST':
+			profile_form = UserProfile(data=request.POST, instance=request.user)
+	                if profile_form.is_valid():
+				profile_form.save()
+				return HttpResponseRedirect('/')
+			return HttpResponseRedirect('www.google.com')
+		else:
+			profile_form = UserProfile();
+			return render(request, 'settings.html', {'profile_form': profile_form})
+	return HttpResponse(status = 404)

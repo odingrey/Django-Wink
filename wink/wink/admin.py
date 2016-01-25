@@ -40,6 +40,7 @@ class UserChangeForm(forms.ModelForm):
 	password hash display field.
 	"""
 	password = ReadOnlyPasswordHashField()
+	wink_password = ReadOnlyPasswordHashField()
 
 	class Meta:
 		model = WinkUser
