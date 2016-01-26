@@ -5,6 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from wink.models import WinkUser
+from wink.models import WinkAPI
 
 
 class UserCreationForm(forms.ModelForm):
@@ -85,3 +86,5 @@ admin.site.register(WinkUser, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
+
+admin.site.register(WinkAPI)

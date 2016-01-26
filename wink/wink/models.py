@@ -7,8 +7,8 @@ class WinkAPI(models.Model):
 	client_id = models.CharField(max_length=100)
 	client_password = models.CharField(max_length=100)
 
-#	def __unicode__(self):
-#		return unicode(self.client_id)
+	def __unicode__(self):
+		return unicode(self.client_id)
 
 
 
