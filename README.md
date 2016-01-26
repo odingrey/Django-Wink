@@ -30,7 +30,7 @@ sudo chown [Apaches group, default is www-data] db.sqlite3
 ```
 As long as everything is configured correctly with Django, it should start right up.  If you want to just test it out, head back to the first wink filder with manage.py and type:<br>
 ``` bash
-./manage.py runserver 0.0.0.0:8000<br><br>
+./manage.py runserver 0.0.0.0:8000
 ```
 Then use your browser to navigate to your servers IP address with the :8000 port followed after it.  If you're local, localhost:8000 should do the trick
 
