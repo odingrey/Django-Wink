@@ -19,7 +19,7 @@ New UI applied using Twitters Bootstrap (http://getbootstrap.com/) and bootstrap
 ##How To Install
 Configure Apache server (or whatever you want, honestly), along with Django and mod_wsgi to point to the wsgi.py file in the main folder.<br>
 Navigate to the first wink folder with manage.py and run:<br>
-``` python
+``` bash 
 ./manage.py migrate
 ./manage.py createsuperuser
 sudo chown [Your username] -R *
@@ -28,7 +28,7 @@ cd wink
 sudo chown [Apaches group, default is www-data] db.sqlite3
 ```
 As long as everything is configured correctly with Django, it should start right up.  If you want to just test it out, head back to the first wink filder with manage.py and type:<br>
-``` python
+``` bash
 ./manage.py runserver 0.0.0.0:8000<br><br>
 ```
 Then use your browser to navigate to your servers IP address with the :8000 port followed after it.  If you're local, localhost:8000 should do the trick
