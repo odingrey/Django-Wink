@@ -27,7 +27,7 @@ sudo chgrp [Apaches group, default is www-data] -R *
 cd wink
 sudo chown [Apaches group, default is www-data] db.sqlite3
 ```
-As long as everything is configured correctly with Django, it should start right up.  If you want to just test it out, head back to the first wink filder with manage.py and type:<br>
+As long as everything is configured correctly with Django, it should start right up.  If you want to just test it out, head back to the first wink folder with manage.py and type:<br>
 ``` python
 ./manage.py runserver 0.0.0.0:8000<br><br>
 ```
