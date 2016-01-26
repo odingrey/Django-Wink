@@ -81,11 +81,22 @@ def registerAPI(request):
 
 def changeAPI(request):
 	if request.user.is_staff:
-		content = {
-			'user': request.user
-		}
+		winkAPI = WinkAPI.objects.all()[0]	# Get API info
+                if request.method == 'POST':
+                        API_form = APIForm(data=request.POST, instance=winkAPI)
+                        if API_form.is_valid():
+                                API_form.save()
+                        return HttpResponseRedirect('/')
+                else:
+                        API_form = APIForm(instance=winkAPI);	# Form for API 
+			content = {
+				'API_form': API_form,
+			}
+                        return render(request, 'changeAPI.html', content)
+
 		return render(request, 'changeAPI.html', content)
 	return HttpResponse(status=401)
+
 
 def settings(request):
 	if request.user.is_authenticated():
@@ -93,9 +104,8 @@ def settings(request):
 			profile_form = UserProfile(data=request.POST, instance=request.user)
 	                if profile_form.is_valid():
 				profile_form.save()
-				return HttpResponseRedirect('/')
-			return HttpResponseRedirect('www.google.com')
+			return HttpResponseRedirect('/')
 		else:
 			profile_form = UserProfile();
 			return render(request, 'settings.html', {'profile_form': profile_form})
-	return HttpResponse(status = 404)
+	return HttpResponse(status = 401) # Not Authenticated

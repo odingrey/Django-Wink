@@ -1,5 +1,9 @@
 {% if user.is_staff %}
-	Here
+<form id="submit_form" method="post" action="changeAPI/" enctype="multipart/form-data">
+	{{ API_form.as_p }}
+	{% csrf_token %}
+	<p><input type="submit" value="upload" /></p>
+</form>
 {% else %}
 	Permission Denied
 {% endif %}
