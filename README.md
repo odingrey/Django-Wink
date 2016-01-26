@@ -7,12 +7,13 @@ This is a fork off of davidgruhin https://github.com/davidgruhin/WinkPost who po
 <br>
 It's designed to run Django on a live webserver.  It will allow user registration and and passworded login to safely allow multiple users to access their Wink home automation
 <br><br>
+## Features
 We'll call this the Beta version, features include:<br>
-Registraion/Login/Logout system working<br>
+Registration/Login/Logout system working<br>
 User account holds users wink username and password<br>
 davidgruhins code ported successfully and working<br>
 User admins have ability to add, change or remove Wink API info (which you have to get from Wink)<br>
-New UI applied using Twitters Bootstrap (http://getbootstrap.com/) and bootstrap-material-design (http://fezvrasta.github.io/bootstrap-material-design/)<br>
+New UI applied using [Twitters Bootstrap](http://getbootstrap.com/) and [bootstrap-material-design](http://fezvrasta.github.io/bootstrap-material-design/)<br>
 
 
 
