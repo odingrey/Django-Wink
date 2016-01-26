@@ -35,6 +35,7 @@ def main(request):
 
 
 def loginUser(request):
+	# TODO(mike): Handle the redirect and stuff on the backend.
 	if request.user.is_authenticated():
 		return HttpResponseRedirect('/')
 	else:
