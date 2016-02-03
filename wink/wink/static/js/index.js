@@ -1,37 +1,35 @@
+$(document).ready(function() {
 
-function init(){
-	// Initial function, loads main and defaults
-	$( '#main_button').addClass('active');
-       	$( '#infobox' ).attr('linked', '#main');
-	
-	// Loads html information into the content divs
-	$( '#register' ).load( 'register' );
-	$( '#settings' ).load( 'settings' );
-	$( '#registerAPI' ).load( 'registerAPI' );
-	$( '#changeAPI' ).load( 'changeAPI' );
+  // create a LatLng object containing the coordinate for the center of the map
+  var latlng = new google.maps.LatLng(-33.86455, 151.209);
 
-        // Adds 'linked' attributes to each button linking to their content divs
- 	$( '#main_button' ).attr('linked', '#main');
-	$( '#login_button' ).attr('linked', '#login');
-	$( '#logout_button' ).attr('linked', '#logout');
-	$( '#api_change_button' ).attr('linked', '#changeAPI');
+  // prepare the map properties
+  var options = {
+    zoom: 15,
+    center: latlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    navigationControl: true,
+    mapTypeControl: false,
+    scrollwheel: false,
+    disableDoubleClickZoom: true
+  };
 
-	// Link menu clicking to clickMenu command
-        $('#menu_left li').click(function(){clickMenu(this)});
-        $('#menu_right li').click(function(){clickMenu(this)});
-	$.material.init()
-};
-init();
+  // initialize the map object
+  var map = new google.maps.Map(document.getElementById('google_map'), options);
 
-function clickMenu(button){
-	if ($(button).attr('linked') != $( '#infobox' ).attr('linked')){ //do nothing if already on that div
-		$( '#infobox' ).html($($(button).attr('linked')).html());	  //sets infobox html to content div html
-	$('#menu_right li').removeClass('active');						  //removes button highlight
-				$('#menu_left li').removeClass('active');						 //removes button highlight
-	$('#' + $(button).attr('id')).addClass('active');			  //highlights selected button
-		$( '#infobox' ).attr('linked', $(button).attr('linked'));	  //tells infobox which div is linked
-	}
-	if ($( '#infobox' ).attr('linked') == '#main'){
-		fetchDevices();
-	}
-};
+  // add Marker
+  var marker1 = new google.maps.Marker({
+    position: latlng,
+    map: map
+  });
+
+  // add listener for a click on the pin
+  google.maps.event.addListener(marker1, 'click', function() {
+    infowindow.open(map, marker1);
+  });
+
+  // add information window
+  var infowindow = new google.maps.InfoWindow({
+    content: '<div class="info"><strong>This is my company</strong><br><br>My company address is here<br> 32846 Sydney</div>'
+  });
+});
