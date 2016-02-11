@@ -32,6 +32,6 @@ function clickMenu(button){
 		$( '#infobox' ).attr('linked', $(button).attr('linked'));	  //tells infobox which div is linked
 	}
 	if ($( '#infobox' ).attr('linked') == '#main'){
-		fetchDevices();
+//		fetchDevices();
 	}
 };

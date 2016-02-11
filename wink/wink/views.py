@@ -126,3 +126,7 @@ def settings(request):
 			profile_form = UserProfile();
 			return render(request, 'settings.html', {'profile_form': profile_form})
 	return HttpResponse(status = 401) # Not Authenticated
+
+
+def angular(request):
+	return render(request, 'angular.html')

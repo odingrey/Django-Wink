@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wink Web Control</title>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/angular.min.js"></script>
+	
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<script src="/static/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="/static/css/bootstrap-material-design.css">
+	<script type="text/javascript" src="/static/js/material.js"></script>
+	<script type="text/javascript" src="/static/js/ripples.js"></script>
+	<link rel="stylesheet" href="/static/css/ripples.css">
+	
+	
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	<link rel="stylesheet" href="/static/css/index.css">
+	
+	<script src="http://malsup.github.com/jquery.form.js"></script>
+
+
+	<base href="/" />
+
+
+
+	<script>
+	$( document ).ready(function() {
+		init();
+		{% if user.is_anonymous %}
+			$( '#login' ).load( 'login', function(){
+				$( '#login_button' ).addClass('active');
+        	                $( '#infobox' ).html($( '#login' ).html()).hide().show();
+                	        $( '#infobox' ).attr('linked', '#main');
+				$( '#main' ).html($( '#login' ).html());
+			});
+		{% else %}
+			$( '#main' ).load( 'main', function(){
+				$( '#main_button').addClass('active');
+			       	$( '#infobox' ).html($( '#main' ).html()).hide().show();
+			       	$( '#infobox' ).attr('linked', '#login');
+			});
+		{% endif %}
+	});
+	</script>
+
+</head>
+
+<body>
+
+<div class="bs-component">
+	  <div class="navbar navbar-default">
+		<div class="container-fluid">
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">
+				<span><img src="static/png/ic_device_wink_add.png"/></span>
+				Wink Web Control
+			</a>
+		  </div>
+		  <div class="navbar-collapse collapse navbar-responsive-collapse">
+			<ul id = 'menu_left' class="nav navbar-nav">
+			  <li id = 'main_button' class="button active" linked='#main'><a>Home</a></li>
+			</ul>
+			<ul id='menu_right' class="nav navbar-nav navbar-right">
+			{% if user.is_anonymous %}
+				<li id='login_button' class='button' linked='#login'><a>Login</a></li>
+				<li id='register_button' class='button' linked='#register'><a>Register</a></li>
+			{% else %}
+			<li class="dropdown">
+				<a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Settings
+				  <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				  <li id = 'settings_button' class = 'button' linked = '#settings'><a>Settings</a></li>
+				  <li id = 'logout_button'><a href="logout">Logout</a></li>
+				  {% if user.is_staff %}
+				  <li class="divider"></li>
+				  <li class="dropdown-header">Admin</li>
+				  <li id = 'api_change_button' class = 'button' linked = '#api'><a>Change API Info</a></li>
+				  {% endif %}
+				</ul>
+			  </li>
+			</ul>
+			{% endif %}
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+
+	  <div class="bs-docs-section container">
+
+		<div class="row">
+		  <div class="col-md-12">
+
+			<div class="page-header">
+			  <h1 id="container">Wink Devices</h1>
+			</div>
+                        <div class="jumbotron" id="infobox" ng-app='wink'>
+				stuff
+			</div>
+		  </div>
+		</div>
+	</div>
+
+
+
+	<div id='main' class='info'></div>
+	<div id='login' class='info'></div>
+	<div id='settings' class='info'></div>
+	<div id='register' class='info'></div>
+	<div id='registerAPI' class='info'></div>
+	<div id='changeAPI' class='info'></div>
+
+</body>
+</html>
