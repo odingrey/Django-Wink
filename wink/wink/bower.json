@@ -1,0 +1,12 @@
+{
+  "name": "Django-Wink",
+  "version": "0.0.0",
+  "homepage": "http://45.56.88.91/",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-mocks": "1.5.x",
+    "jquery": "~2.1.1",
+    "angular-route": "1.5.x"
+  }
+}
