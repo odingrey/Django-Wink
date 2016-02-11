@@ -1,0 +1,8 @@
+<h1>API Key and password not found, please enter them</h1>
+<form  method="post" action="/registerAPI/" enctype="multipart/form-data">
+	
+	{% csrf_token %}
+	{{ form.as_p }}
+	<!-- {{ profile_form.as_p }} -->
+	<input type="submit" name="submit" value="Register" />
+</form>
