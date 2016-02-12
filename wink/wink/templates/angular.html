@@ -1,126 +1,63 @@
 <!DOCTYPE html>
 <html ng-app="wink">
+
 <head>
 	<title>Wink Web Control</title>
 
 	<script src="/bower/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="/bower/angular/angular.js"></script>
 	<script src="/bower/angular-route/angular-route.min.js"></script>
-	
-	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
-	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
-	
-	<link rel="stylesheet" href="/static/css/bootstrap-material-design.css">
-	<script type="text/javascript" src="/static/js/material.js"></script>
-	<script type="text/javascript" src="/static/js/ripples.js"></script>
-	<link rel="stylesheet" href="/static/css/ripples.css">
-	
-	
-	<script type="text/javascript" src="/static/js/index.js"></script>
-	<link rel="stylesheet" href="/static/css/index.css">
-	
-	<script src="http://malsup.github.com/jquery.form.js"></script>
-	<script src="/static/wink/wink.js"></script> 
-        <script src="/static/wink/controllers.js"></script>
+	<script src="/bower/angular-animate/angular-animate.js"></script>
+	<script src="/bower/angular-aria/angular-aria.js"></script>
+	<script src="/bower/angular-messages/angular-messages.js"></script>
+	<script src="/bower/angular-material/angular-material.js"></script>
+	<script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+	<!-- Temporary solution -->
+	<link rel="stylesheet" href="/bower/angular-material/angular-material.css">
 
 
-
-	<base href="/" />
-
-
-
-	<script>
-/*	$( document ).ready(function() {
-		init();
-		{% if user.is_anonymous %}
-			$( '#login' ).load( 'login', function(){
-				$( '#login_button' ).addClass('active');
-        	                $( '#infobox' ).html($( '#login' ).html()).hide().show();
-                	        $( '#infobox' ).attr('linked', '#main');
-				$( '#main' ).html($( '#login' ).html());
-			});
-		{% else %}
-			$( '#main' ).load( 'main', function(){
-				$( '#main_button').addClass('active');
-			       	$( '#infobox' ).html($( '#main' ).html()).hide().show();
-			       	$( '#infobox' ).attr('linked', '#login');
-			});
-		{% endif %}
-	});
-*/
-	</script>
-
-</head>
-
-<body>
-
-<div class="bs-component">
-	  <div class="navbar navbar-default">
-		<div class="container-fluid">
-		  <div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-			  <span class="icon-bar"></span>
-			  <span class="icon-bar"></span>
-			  <span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/">
-				<span><img src="static/png/ic_device_wink_add.png"/></span>
-				Wink Web Control
-			</a>
-		  </div>
-		  <div class="navbar-collapse collapse navbar-responsive-collapse">
-			<ul id = 'menu_left' class="nav navbar-nav">
-			  <li id = 'main_button' class="button active" linked='#main'><a>Home</a></li>
-			</ul>
-			<ul id='menu_right' class="nav navbar-nav navbar-right">
-			{% if user.is_anonymous %}
-				<li id='login_button' class='button' linked='#login'><a>Login</a></li>
-				<li id='register_button' class='button' linked='#register'><a>Register</a></li>
-			{% else %}
-			<li class="dropdown">
-				<a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Settings
-				  <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-				  <li id = 'settings_button' class = 'button' linked = '#settings'><a>Settings</a></li>
-				  <li id = 'logout_button'><a href="logout">Logout</a></li>
-				  {% if user.is_staff %}
-				  <li class="divider"></li>
-				  <li class="dropdown-header">Admin</li>
-				  <li id = 'api_change_button' class = 'button' linked = '#api'><a>Change API Info</a></li>
-				  {% endif %}
-				</ul>
-			  </li>
-			</ul>
-			{% endif %}
-		  </div>
-		</div>
-	  </div>
-	</div>
+	<script src="/static/wink/wink.js"></script>
+	<script src="/static/wink/controllers.js"></script>
 
 
-	  <div class="bs-docs-section container">
+	<body>
 
-		<div class="row">
-		  <div class="col-md-12">
+		<div ng-controller="NavCtrl" class="toolbar" ng-cloak="">
+			<md-toolbar class="md-theme-indigo">
+				<div class="md-toolbar-tools">
+					<md-button class="md-icon-button" aria-label="Settings">
+						<md-icon md-svg-icon="img/icons/menu.svg" ng-click="toggleLeft()"></md-icon>
+					</md-button>
+					<h2>
+                  <span>Toolbar with Icon Buttons</span>
+                </h2>
 
-			<div class="page-header">
-			  <h1 id="container">Wink Devices</h1>
-			</div>
-                        <div class="jumbotron" id="infobox" ng-view>
-				stuff
-			</div>
-		  </div>
-		</div>
-	</div>
+					<span flex=""></span>
+					<md-button class="md-icon-button" aria-label="More">
+						<md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+					</md-button>
 
+				</div>
+			</md-toolbar>
+			<section flex='' layout='row'>
+				<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+					<md-content layout-padding="" ng-controller="LeftCtrl">
+						<md-button ng-click="close()" class="md-primary" hide-gt-md="">
+							Close Sidenav Left
+						</md-button>
+						<p>
+							test
+						</p>
+					</md-content>
+				</md-sidenav>
 
+				<md-content flex="" layout-padding="" id="infobox">
+					<div layout="column" layout-fill="" layout-align="top center" ng-view>
+						stuff
+					</div>
+				</md-content>
+			</section>
 
-	<div id='main' class='info'></div>
-	<div id='login' class='info'></div>
-	<div id='settings' class='info'></div>
-	<div id='register' class='info'></div>
-	<div id='registerAPI' class='info'></div>
-	<div id='changeAPI' class='info'></div>
+	</body>
 
-</body>
 </html>

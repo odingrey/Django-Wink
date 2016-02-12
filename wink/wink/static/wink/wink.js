@@ -1,18 +1,21 @@
 var winkApp = angular.module('wink', [
 	'ngRoute',
-	'winkControllers'
+	'winkControllers',
+	'ngMaterial',
+	'ngMessages',
+	'material.svgAssetsCache'
 ]);
 
 
 winkApp.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
-			when('/angular', {
-				templateUrl: '/static/wink/templates/test.html',
-				controller: 'testController'
+			when('/', {
+				templateUrl: '/static/wink/templates/main.html',
+				controller: 'mainController'
 			}).
 			otherwise({
-				redirectTo: '/angular'
+				redirectTo: '/'
 			});
 	}]
 );
