@@ -6,6 +6,35 @@ winkControllers.controller('mainController', ['$scope', '$http',
 	}
 ]);
 
+winkControllers.controller('loginController', ['$scope', '$http',
+        function($scope, $http) {
+        }
+]);
+
+
+winkControllers.controller('settingsController', ['$scope', '$http',
+        function($scope, $http) {
+        }
+]);
+
+
+winkControllers.controller('registerController', ['$scope', '$http',
+        function($scope, $http) {
+        }
+]);
+
+winkControllers.controller('registerAPIController', ['$scope', '$http',
+        function($scope, $http) {
+        }
+]);
+
+winkControllers.controller('changeAPIController', ['$scope', '$http',
+        function($scope, $http) {
+        }
+]);
+
+
+
 winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav) {
 	$scope.toggleLeft = buildDelayedToggler('left');
 	/**

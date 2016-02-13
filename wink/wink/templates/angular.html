@@ -22,15 +22,15 @@
 
 	<body>
 
-		<div ng-controller="NavCtrl" class="toolbar" ng-cloak="">
+		<div ng-controller="NavCtrl" class="toolbar" ng-cloak="" flex style="height: 100%">
 			<md-toolbar class="md-theme-indigo">
 				<div class="md-toolbar-tools">
 					<md-button class="md-icon-button" aria-label="Settings">
 						<md-icon md-svg-icon="img/icons/menu.svg" ng-click="toggleLeft()"></md-icon>
 					</md-button>
 					<h2>
-                  <span>Toolbar with Icon Buttons</span>
-                </h2>
+			                  <span> <a href="#">Wink Home</a></span>
+			                </h2>
 
 					<span flex=""></span>
 					<md-button class="md-icon-button" aria-label="More">
@@ -39,24 +39,24 @@
 
 				</div>
 			</md-toolbar>
-			<section flex='' layout='row'>
-				<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+			<section flex='20' layout='row' style="height:100%;">
+				<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" flex>
 					<md-content layout-padding="" ng-controller="LeftCtrl">
 						<md-button ng-click="close()" class="md-primary" hide-gt-md="">
 							Close Sidenav Left
 						</md-button>
 						<p>
-							test
+							<md-button class="md-primary" href="#settings">Settings Test</md-button>
 						</p>
 					</md-content>
 				</md-sidenav>
-
 				<md-content flex="" layout-padding="" id="infobox">
 					<div layout="column" layout-fill="" layout-align="top center" ng-view>
-						stuff
+						
 					</div>
 				</md-content>
-			</section>
+			</section> 
+		</div>
 
 	</body>
 
