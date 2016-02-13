@@ -49,6 +49,14 @@ def loginUser(request):
 		else:
 			return render(request, 'login.html')
 
+def getUserInfo(request):
+	user = request.user
+	if user.is_authenticated():
+		content = {
+			'username': user.email
+		}
+		return JsonResponse(content)
+
 
 def register(request):
 	#TODO(mike): Redirect failed registration into correct window instead of new one

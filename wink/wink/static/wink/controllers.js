@@ -2,7 +2,13 @@ var winkControllers = angular.module('winkControllers', []);
 
 winkControllers.controller('mainController', ['$scope', '$http',
 	function($scope, $http) {
-		$scope.test = "This is a test";
+		$http({
+			method: 'GET',
+			url: '/getUserInfo'
+		}).then(function successCallback(response) {
+			$scope.username = response.data.username;
+			$scope.test = "This is a test!";
+		});
 	}
 ]);
 
