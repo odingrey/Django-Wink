@@ -8,6 +8,7 @@ winkControllers.controller('mainController', ['$scope', '$http',
 		}).then(function successCallback(response) {
 			$scope.username = response.data.username;
 			$scope.test = "This is a test!";
+			fillBody();
 		});
 	}
 ]);

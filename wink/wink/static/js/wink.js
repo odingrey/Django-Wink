@@ -2,6 +2,7 @@ var nLight = [];
 var divLights = [];
 var mySliderLight = [];
 var controlWinks = [];
+var AccessToken = "";
 
 function createRequest() {
 	var result = null;
@@ -29,7 +30,7 @@ function getWinkRow(wink, row) {
 			var cell = document.getElementById("State" + row);
 			var state = document.createElement("img");
 			var bPowered = wink.desired_state.powered;
-			state.src = "static/png/lights/" + bPowered + ".png";
+			state.src = "/static/png/lights/" + bPowered + ".png";
 			state.alt = bPowered;
 			cell.appendChild(state);
 			var cell = document.getElementById("Desc" + row);
@@ -38,7 +39,7 @@ function getWinkRow(wink, row) {
 			divDesc.style.width = 60;
 			divDesc.style.textAlign = 'center';
 			var img = document.createElement("img");
-			img.src = "static/png/lights/light_bulb.png";
+			img.src = "/static/png/lights/light_bulb.png";
 			img.width = 48;
 			img.height = 48;
 			divDesc.appendChild(img);
@@ -67,7 +68,7 @@ function getWinkRow(wink, row) {
 			var lineNext = document.createElement("BR");
 			cell.appendChild(lineNext);
 			var temp_bg = document.createElement("img");
-			temp_bg.src = "static/png/lights/lightlegend.gif";
+			temp_bg.src = "/static/png/lights/lightlegend.gif";
 			temp_bg.style.paddingTop = "5px";
 			temp_bg.style.align = "left";
 			cell.appendChild(temp_bg);
@@ -81,7 +82,7 @@ function getWinkRow(wink, row) {
 		case 'locks':
 			var cell = document.getElementById("State" + row);
 			var state = document.createElement("img");
-			state.src = "static/png/locks/"+ wink.desired_state.locked + ".png";
+			state.src = "/static/png/locks/"+ wink.desired_state.locked + ".png";
 			cell.appendChild(state);
 			var cell = document.getElementById("Desc" + row);
 			var divDesc = document.createElement('div');
@@ -89,7 +90,7 @@ function getWinkRow(wink, row) {
 			divDesc.style.width = 60;
 			divDesc.style.textAlign = 'center';
 			var img = document.createElement("img");
-			img.src = "static/png/locks/ic_device_locks_selection.png";
+			img.src = "/static/png/locks/ic_device_locks_selection.png";
 			img.width = 48;
 			img.height = 48;
 			divDesc.appendChild(img);
@@ -117,7 +118,7 @@ function getWinkRow(wink, row) {
 			cell.appendChild(lineNext);
 			var temp_bg = document.createElement("img");
 			temp_bg.style.paddingTop = "5px";
-			temp_bg.src = "static/png/locks/LockLegend.png";
+			temp_bg.src = "/static/png/locks/LockLegend.png";
 			temp_bg.style.align = 'left';
 			cell.appendChild(temp_bg);
 			mySliderLight[row].attachEvent("onSlideEnd", function(newLock){
@@ -139,7 +140,7 @@ function getWinkRow(wink, row) {
 			divDesc.style.width = 60;
 			divDesc.style.textAlign = 'center';
 			var img = document.createElement("img");
-			img.src = "static/png/thermostat/ic_device_thermostat_selection.png";
+			img.src = "/static/png/thermostat/ic_device_thermostat_selection.png";
 			img.width = 48;
 			img.height = 48;
 			divDesc.appendChild(img);
@@ -164,7 +165,7 @@ function getWinkRow(wink, row) {
 //			cell.appendChild(lineNext);
 			var temp_bg = document.createElement("img");
 			temp_bg.style.paddingTop = "5px";
-			temp_bg.src = "static/png/thermostat/thermostat.gif";
+			temp_bg.src = "/static/png/thermostat/thermostat.gif";
 			cell.appendChild(temp_bg);
 			mySliderLight[row].attachEvent("onSlideEnd", function(newTemp){
 				//Convert to Celsius
@@ -182,7 +183,7 @@ function getWinkRow(wink, row) {
 			divDesc.style.width = 60;
 			divDesc.style.textAlign = 'center';
 			var img = document.createElement("img");
-			img.src = "static/png/hub/hub.png";
+			img.src = "/static/png/hub/hub.png";
 			img.width = 48;
 			img.height = 48;
 			divDesc.appendChild(img);
@@ -194,7 +195,7 @@ function getWinkRow(wink, row) {
 		case 'sensor_pods':
 			var cell = document.getElementById("State" + row);
 			var state = document.createElement("img");
-			state.src = "static/png/sensors/na.png";
+			state.src = "/static/png/sensors/na.png";
 			state.alt = 'N/A';
 			cell.appendChild(state);
 			var cell = document.getElementById("Desc" + row);
@@ -203,7 +204,7 @@ function getWinkRow(wink, row) {
 			divDesc.style.width = 60;
 			divDesc.style.textAlign = 'center';
 			var img = document.createElement("img");
-			img.src = "static/png/sensors/sensor.png";
+			img.src = "/static/png/sensors/sensor.png";
 			img.width = 64;
 			img.height = 64;
 			divDesc.appendChild(img);
@@ -217,7 +218,7 @@ function getWinkRow(wink, row) {
 			case 'propane_tanks':
 			var cell = document.getElementById("State" + row);
 			var state = document.createElement("img");
-			state.src = "static/png/sensors/na.png";
+			state.src = "/static/png/sensors/na.png";
 			state.alt = 'N/A';
 			cell.appendChild(state);
 			var cell = document.getElementById("Desc" + row);
@@ -226,7 +227,7 @@ function getWinkRow(wink, row) {
 			divDesc.style.width = 60;
 			divDesc.style.textAlign = 'center';
 			var img = document.createElement("img");
-			img.src = "static/png/sensors/sensor.png";
+			img.src = "/static/png/sensors/sensor.png";
 			img.width = 64;
 			img.height = 64;
 			divDesc.appendChild(img);
@@ -240,7 +241,7 @@ function getWinkRow(wink, row) {
 		case 'smoke_detectors':
 			var cell = document.getElementById("State" + row);
 			var state = document.createElement("img");
-			state.src = "static/png/sensors/true.png";
+			state.src = "/static/png/sensors/true.png";
 			state.alt = 'N/A';
 			cell.appendChild(state);
 			var cell = document.getElementById("Desc" + row);
@@ -249,7 +250,7 @@ function getWinkRow(wink, row) {
 			divDesc.style.width = 60;
 			divDesc.style.textAlign = 'center';
 			var img = document.createElement("img");
-			img.src = "static/png/sensors/smokealarm.png";
+			img.src = "/static/png/sensors/smokealarm.png";
 			img.width = 64;
 			img.height = 64;
 			divDesc.appendChild(img);
@@ -259,15 +260,15 @@ function getWinkRow(wink, row) {
 			var cell = document.getElementById("Switch" + row);
 			var imgBattery = document.createElement('img');
 			if(wink.last_reading.battery > .8)
-				imgBattery.src = 'static/png/battery/battery_100.png';
+				imgBattery.src = '/static/png/battery/battery_100.png';
 			if((wink.last_reading.battery <= .8) && (wink.last_reading.battery > .6))
-				imgBattery.src = 'static/pgn/battery/battery_75.png';
+				imgBattery.src = '/static/pgn/battery/battery_75.png';
 			if((wink.last_reading.battery <= .6) && (wink.last_reading.battery > .3))
-				imgBattery.src = 'static/pgn/battery/battery_50.png';
+				imgBattery.src = '/static/pgn/battery/battery_50.png';
 			if((wink.last_reading.battery <= .3) && (wink.last_reading.battery > .15))
-				imgBattery.src = 'static/pgn/battery/battery_75.png';
+				imgBattery.src = '/static/pgn/battery/battery_75.png';
 			if((wink.last_reading.battery <= .15) && (wink.last_reading.battery > 0))
-				imgBattery.src = 'static/pgn/battery/battery_10.png';
+				imgBattery.src = '/static/pgn/battery/battery_10.png';
 			imgBattery.alt = wink.last_reading.battery;
 			cell.appendChild(imgBattery);
 				
@@ -278,7 +279,7 @@ function getWinkRow(wink, row) {
 		default:
 			var cell = document.getElementById("State" + row);
 			var state = document.createElement("img");
-			state.src = "static/png/lights/na.png";
+			state.src = "/static/png/lights/na.png";
 			state.alt = 'not light';
 			cell.appendChild(state);
 			var cell = document.getElementById("Desc" + row);
@@ -329,7 +330,6 @@ function fillBody() {
 			var clientid = data.api_id;
 			var clientsecret = data.api_password;
 			var sendstring = "{\"client_id\":\"" + clientid + "\",\"client_secret\":\"" + clientsecret + "\",\"username\":\"" + username + "\",\"password\":\"" + password + "\",\"grant_type\":\"password\"}";
-			
 			xhr.open('POST', 'https://winkapi.quirky.com/oauth2/token');
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.onreadystatechange = function () {
@@ -351,6 +351,9 @@ function fillBody() {
 				}
 			};
 			xhr.send(sendstring);
+		},
+		error: function(data) {
+			console.log("Error");
 		}
 	});
 }
@@ -385,41 +388,41 @@ function updateSensors(wink, row){
 	var divSensor = document.createElement('div');
 	var imgBattery = document.createElement('img');
 	if(wink.last_reading.battery > .8)
-		imgBattery.src = 'static/png/battery/battery_100.png';
+		imgBattery.src = '/static/png/battery/battery_100.png';
 	if((wink.last_reading.battery <= .8) && (wink.last_reading.battery > .6))
-		imgBattery.src = 'static/pgn/battery/battery_75.png';
+		imgBattery.src = '/static/pgn/battery/battery_75.png';
 	if((wink.last_reading.battery <= .6) && (wink.last_reading.battery > .3))
-		imgBattery.src = 'static/pgn/battery/battery_50.png';
+		imgBattery.src = '/static/pgn/battery/battery_50.png';
 	if((wink.last_reading.battery <= .3) && (wink.last_reading.battery > .15))
-		imgBattery.src = 'static/pgn/battery/battery_75.png';
+		imgBattery.src = '/static/pgn/battery/battery_75.png';
 	if((wink.last_reading.battery <= .15) && (wink.last_reading.battery > 0))
-		imgBattery.src = 'static/pgn/battery/battery_10.png';
+		imgBattery.src = '/static/pgn/battery/battery_10.png';
 	imgBattery.alt = wink.last_reading.battery;
 	divSensor.appendChild(imgBattery);
 	imgOpened = document.createElement('img');
 	if(wink.name.search("Door") > 0)
 		if(wink.name.search("Garage") > 0){
 			if(wink.last_reading.opened)
-				imgOpened.src = 'static/png/sensors/sensors_small_garagedoor_open.png';
+				imgOpened.src = '/static/png/sensors/sensors_small_garagedoor_open.png';
 			else
-				imgOpened.src = 'static/png/sensors/sensors_small_garagedoor_closed.png';
+				imgOpened.src = '/static/png/sensors/sensors_small_garagedoor_closed.png';
 			}
 		else{
 			if(wink.last_reading.opened)
-				imgOpened.src = 'static/png/sensors/sensors_small_door_open.png';
+				imgOpened.src = '/static/png/sensors/sensors_small_door_open.png';
 			else
-				imgOpened.src = 'png/sensors/sensors_small_door_closed.png';
+				imgOpened.src = '/static/png/sensors/sensors_small_door_closed.png';
 			}
 	if(wink.name.search("Window") > 0)
 		if(wink.last_reading.opened)
-			imgOpened.src = 'static/png/sensors/sensors_small_window_open.png';
+			imgOpened.src = '/static/png/sensors/sensors_small_window_open.png';
 		else
-			imgOpened.src = 'static/png/sensors/sensors_small_window_closed.png';
+			imgOpened.src = '/static/png/sensors/sensors_small_window_closed.png';
 	if(wink.name.search("Cabinet") > 0)
 		if(wink.last_reading.opened)
-			imgOpened.src = 'static/png/sensors/sensors_small_cabinet_open.png';
+			imgOpened.src = '/static/png/sensors/sensors_small_cabinet_open.png';
 		else
-			imgOpened.src = 'static/png/sensors/sensors_small_cabinet_closed.png';
+			imgOpened.src = '/static/png/sensors/sensors_small_cabinet_closed.png';
 	divSensor.appendChild(imgOpened);
 	cell.appendChild(divSensor);
 	document.getElementById("winkResult").innerHTML = "Found "
@@ -432,30 +435,30 @@ function updateRefuel(wink, row){
 	var divSensor = document.createElement('div');
 	var imgBattery = document.createElement('img');
 	if(wink.last_reading.battery > .8)
-		imgBattery.src = 'static/png/battery/battery_100.png';
+		imgBattery.src = '/static/png/battery/battery_100.png';
 	if((wink.last_reading.battery <= .8) && (wink.last_reading.battery > .6))
-		imgBattery.src = 'static/pgn/battery/battery_75.png';
+		imgBattery.src = '/static/pgn/battery/battery_75.png';
 	if((wink.last_reading.battery <= .6) && (wink.last_reading.battery > .3))
-		imgBattery.src = 'static/pgn/battery/battery_50.png';
+		imgBattery.src = '/static/pgn/battery/battery_50.png';
 	if((wink.last_reading.battery <= .3) && (wink.last_reading.battery > .15))
-		imgBattery.src = 'static/pgn/battery/battery_75.png';
+		imgBattery.src = '/static/pgn/battery/battery_75.png';
 	if((wink.last_reading.battery <= .15) && (wink.last_reading.battery > 0))
-		imgBattery.src = 'static/pgn/battery/battery_10.png';
+		imgBattery.src = '/static/pgn/battery/battery_10.png';
 	imgBattery.alt = wink.last_reading.battery;
 	divSensor.appendChild(imgBattery);
 	var imgRefuel = document.createElement('img');
 	if(wink.last_reading.remaining > .8)
-		imgRefuel.src = 'static/png/refuel/ic_device_refuel_stroke.png';
+		imgRefuel.src = '/static/png/refuel/ic_device_refuel_stroke.png';
 	if((wink.last_reading.remaining <= .8) && (wink.last_reading.refuel > .6))
-		imgRefuel.src = 'static/pgn/refuel/ic_refuel_4.png';
+		imgRefuel.src = '/static/pgn/refuel/ic_refuel_4.png';
 	if((wink.last_reading.remaining <= .6) && (wink.last_reading.refuel > .4))
-		imgRefuel.src = 'static/pgn/refuel/ic_refuel_3.png';
+		imgRefuel.src = '/static/pgn/refuel/ic_refuel_3.png';
 	if((wink.last_reading.remaining <= .4) && (wink.last_reading.refuel > .3))
-		imgRefuel.src = 'static/pgn/refuel/ic_refuel_2.png';
+		imgRefuel.src = '/static/pgn/refuel/ic_refuel_2.png';
 	if((wink.last_reading.remaining <= .3) && (wink.last_reading.refuel > .15))
-		imgRefuel.src = 'static/pgn/refuel/ic_refuel_1.png';
+		imgRefuel.src = '/static/pgn/refuel/ic_refuel_1.png';
 	if((wink.last_reading.remaining <= .15) && (wink.last_reading.refuel > 0))
-		imgRefuel.src = 'static/pgn/refuel/ic_refuel_0.png';
+		imgRefuel.src = '/static/pgn/refuel/ic_refuel_0.png';
 	imgRefuel.alt = wink.last_reading.battery;
 	divSensor.appendChild(imgRefuel);
 	cell.appendChild(divSensor);
@@ -473,7 +476,7 @@ function updateHub(wink, row){
 			var cell = document.getElementById("State" + row);
 			cell.innerHTML = "";
 			var state = document.createElement("img");
-			state.src = "static/png/hub/true.png";
+			state.src = "/static/png/hub/true.png";
 			state.alt = "On-Line";
 			cell.appendChild(state);
 		};
@@ -484,7 +487,7 @@ function updateHub(wink, row){
 				var cell = document.getElementById("State" + row);
 				cell.innerHTML = "";
 				var state = document.createElement("img");
-				state.src = "static/png/hub/false.png";
+				state.src = "/static/png/hub/false.png";
 				state.alt = "Off-Line";
 				cell.appendChild(state);
 			}
