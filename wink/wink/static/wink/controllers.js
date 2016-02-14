@@ -42,7 +42,7 @@ winkControllers.controller('changeAPIController', ['$scope', '$http',
 
 
 
-winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav) {
+winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $mdMedia) {
 	$scope.toggleLeft = buildDelayedToggler('left');
 	/**
 	* Function that operates until the time is up.
@@ -72,10 +72,33 @@ winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav) {
 			$mdSidenav(navID).toggle();
 		}
 	}
+
+	$scope.showSettings = function(ev) {
+		$mdDialog.show({
+			controller: DialogController,
+			templateUrl: '/static/wink/templates/settings.html',
+			parent: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose: true
+		});
+	};
 });
+
+
+function DialogController($scope, $mdDialog) {
+	$scope.hide = function() {
+		$mdDialog.hide();
+	};
+
+	$scope.cancel = function() {
+		$mdDialog.cancel();
+	};
+};
 
 winkControllers.controller('LeftCtrl', function($scope, $mdSidenav) {
 	$scope.close = function() {
 		$mdSidenav('left').close();
 	};
 });
+
+
