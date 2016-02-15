@@ -15,6 +15,8 @@ from forms.api import APIForm
 
 from models import WinkAPI
 
+import json
+
 def index(request):
 	return render(request, 'index.html')
 
@@ -126,15 +128,17 @@ def changeAPI(request):
 def settings(request):
 	if request.user.is_authenticated():
 		if request.method == 'POST':
-			profile_form = UserProfile(data=request.POST, instance=request.user)
+			data = json.loads(request.body)
+#			return JsonResponse(data)
+			winkInfo = {
+				'wink_username': data['username'],
+				'wink_password': data['password']
+			}
+			profile_form = UserProfile(data=winkInfo, instance=request.user)
 	                if profile_form.is_valid():
 				profile_form.save()
-			return HttpResponseRedirect('/')
-		else:
-			profile_form = UserProfile();
-			return render(request, 'settings.html', {'profile_form': profile_form})
+				return HttpResponse(status = 202) # Succesfully updated
+			else:
+				return HttpResponse(status = 400) # Invalid form
 	return HttpResponse(status = 401) # Not Authenticated
 
-
-def angular(request):
-	return render(request, 'angular.html')

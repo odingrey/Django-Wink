@@ -9,7 +9,6 @@ import views
 
 urlpatterns = patterns('',
         url(r'^$', views.index),
-	url(r'^angular/$', views.angular),
 	url(r'^main/$', views.main),
         url(r'^admin/', admin.site.urls),
         url(r'^login/$', views.loginUser),

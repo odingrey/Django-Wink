@@ -1,5 +1,6 @@
 var winkControllers = angular.module('winkControllers', []);
 
+
 winkControllers.controller('mainController', ['$scope', '$http',
 	function($scope, $http) {
 		$http({
@@ -21,6 +22,19 @@ winkControllers.controller('loginController', ['$scope', '$http',
 
 winkControllers.controller('settingsController', ['$scope', '$http',
         function($scope, $http) {
+		$scope.updateWink = function(wink) {
+			$http({
+				method: 'POST',
+				url: '/settings/',
+				data: { 'username': wink.username,
+					'password': wink.password}
+				}).then(function successCallback(response) {
+					$scope.winkMessage = "Successfully updated wink information";
+				}, function errorCallback(response) {
+					$scope.winkMessage = "Failed to update wink information";
+			
+			});
+		};
         }
 ]);
 
