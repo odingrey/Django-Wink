@@ -90,7 +90,7 @@ winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav, $md
 	$scope.showSettings = function(ev) {
 		$mdDialog.show({
 			controller: DialogController,
-			templateUrl: '/renderSettings',
+			templateUrl: '/renderSettings', // Rendered through Django first (to add admin if user is admin)
 			parent: angular.element(document.body),
 			targetEvent: ev,
 			clickOutsideToClose: true
