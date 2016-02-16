@@ -30,10 +30,6 @@ winkApp.config(['$routeProvider',
                                 templateUrl: '/static/wink/templates/main.html',
                                 controller: 'changeAPIController'
                         }).
-                        when('/settings', {
-                                templateUrl: '/static/wink/templates/settings.html',
-                                controller: 'settingsController'
-                        }).
 			otherwise({
 				redirectTo: '/'
 			});

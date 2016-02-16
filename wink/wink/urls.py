@@ -17,6 +17,7 @@ urlpatterns = patterns('',
         url(r'^registerAPI/$', views.registerAPI),
 	url(r'^changeAPI/$', views.changeAPI),
 	url(r'^getWinkLogin/$', views.getWinkLogin),
+	url(r'^renderSettings/$', views.renderSettings),
 	url(r'^settings/$', views.settings),
 	url(r'^getUserInfo/$', views.getUserInfo),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

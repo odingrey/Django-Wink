@@ -90,7 +90,7 @@ winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav, $md
 	$scope.showSettings = function(ev) {
 		$mdDialog.show({
 			controller: DialogController,
-			templateUrl: '/static/wink/templates/settings.html',
+			templateUrl: '/renderSettings',
 			parent: angular.element(document.body),
 			targetEvent: ev,
 			clickOutsideToClose: true

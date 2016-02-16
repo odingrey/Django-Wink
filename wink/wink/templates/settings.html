@@ -1,5 +1,67 @@
-<form id="submit_form" method="post" action="settings/" enctype="multipart/form-data">
-	{{ profile_form.as_p }}
-	{% csrf_token %}
-	<p><input type="submit" value="Submit" /></p>
-</form>
+<md-dialog style='width: 50%' ng-controller="settingsController">
+        <form>
+                <md-toolbar>
+                        <div class="md-toolbar-tools">
+                                <h2>Wink Settings</h2>
+                                <span flex></span>
+                                <md-button class="md-icon-button" ng-click="cancel()">
+                                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close settings"></md-icon>
+                                </md-button>
+                        </div>
+                </md-toolbar>
+                <md-dialog-content style="max-width:800px;max-height:810px; ">
+                        <md-tabs md-dynamic-height md-border-bottom>
+                                <md-tab label="wink web settings">
+                                        <md-content class="md-padding">
+                                                <h1 class="md-display-2">Settings</h1>
+                                                <p>Settings will eventually go here</p>
+                                        </md-content>
+                                </md-tab>
+                                <md-tab label="wink settings">
+                                        <md-content class="md-padding">
+                                                <h1 class="md-display-2">Wink Settings</h1>
+                                                <p>
+                                                        <md-content layout-padding="">
+                                                                <div>
+                                                                        <form novalidate>
+                                                                                <div layout-gt-sm="column">
+                                                                                        <md-input-container class="md-block" flex-gt-sm="">
+                                                                                                <label>Wink Username</label>
+                                                                                                <input type="text" ng-model="wink.username">
+                                                                                        </md-input-container>
+
+                                                                                        <md-input-container class="md-block" flex-gt-sm="">
+                                                                                                <label>Wink Password</label>
+                                                                                                <input type="password" ng-model="wink.password">
+                                                                                        </md-input-container>
+                                                                                        <md-button type="submit" class="md-raised" ng-click="updateWink(wink)">Save</md-button>
+                                                                                </div>
+                                                                        </form>
+                                                                        <br>
+									{% verbatim  %}
+                                                                        {{winkMessage}}
+									{% endverbatim %}
+                                                                </div>
+                                                        </md-content>
+                                                </p>
+                                        </md-content>
+                                </md-tab>
+				{% if user.is_staff %}
+                                <md-tab label="admin">
+                                        <md-content class="md-padding">
+                                                <h1 class="md-display-2">Admin</h1>
+                                                <p>If you are an admin, you'll be able to change admin settings here</p>
+                                        </md-content>
+                                </md-tab>
+				{% endif %}
+                        </md-tabs>
+                </md-dialog-content>
+
+                <md-dialog-actions layout="row">
+                        <md-button href="http://www.wink.com/" target="_blank" md-autofocus>
+                                More on Wink
+                        </md-button>
+                </md-dialog-actions>
+        </form>
+</md-dialog>
+

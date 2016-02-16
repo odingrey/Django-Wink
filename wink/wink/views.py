@@ -49,7 +49,7 @@ def loginUser(request):
 		        else:
 		            return HttpResponse('401') #Unauthorized (IE, bad username and password)
 		else:
-			return render(request, 'login.html')
+			return render(request, '/login.html')
 
 def getUserInfo(request):
 	user = request.user
@@ -123,6 +123,9 @@ def changeAPI(request):
 
 		return render(request, 'changeAPI.html', content)
 	return HttpResponse(status=401)
+
+def renderSettings(request):
+	return render(request, 'settings.html')
 
 
 def settings(request):
