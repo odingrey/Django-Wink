@@ -110,10 +110,15 @@ def changeAPI(request):
 	if request.user.is_staff:
 		winkAPI = WinkAPI.objects.all()[0]	# Get API info
                 if request.method == 'POST':
-                        API_form = APIForm(data=request.POST, instance=winkAPI)
+			data = json.loads(request.body)
+			apiInfo = {
+				'client_id': data['id'],
+				'client_password': data['password']
+			}
+                        API_form = APIForm(data=apiInfo, instance=winkAPI)
                         if API_form.is_valid():
                                 API_form.save()
-                        return HttpResponseRedirect('/')
+                        return HttpResponse('status = 202') # Successfully updated
                 else:
                         API_form = APIForm(instance=winkAPI);	# Form for API 
 			content = {
@@ -122,17 +127,13 @@ def changeAPI(request):
                         return render(request, 'changeAPI.html', content)
 
 		return render(request, 'changeAPI.html', content)
-	return HttpResponse(status=401)
-
-def renderSettings(request):
-	return render(request, 'settings.html')
+	return HttpResponse(status=401) # Not Authorized
 
 
 def settings(request):
 	if request.user.is_authenticated():
 		if request.method == 'POST':
 			data = json.loads(request.body)
-#			return JsonResponse(data)
 			winkInfo = {
 				'wink_username': data['username'],
 				'wink_password': data['password']
@@ -143,5 +144,7 @@ def settings(request):
 				return HttpResponse(status = 202) # Succesfully updated
 			else:
 				return HttpResponse(status = 400) # Invalid form
+		else:
+			return render(request, 'settings.html')
 	return HttpResponse(status = 401) # Not Authenticated
 

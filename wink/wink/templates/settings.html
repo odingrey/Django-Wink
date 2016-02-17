@@ -50,7 +50,30 @@
                                 <md-tab label="admin">
                                         <md-content class="md-padding">
                                                 <h1 class="md-display-2">Admin</h1>
-                                                <p>If you are an admin, you'll be able to change admin settings here</p>
+						<p>
+                                                        <md-content layout-padding="">
+                                                                <div>
+                                                                        <form novalidate>
+                                                                                <div layout-gt-sm="column">
+                                                                                        <md-input-container class="md-block" flex-gt-sm="">
+                                                                                                <label>Client ID</label>
+                                                                                                <input type="text" ng-model="client.id">
+                                                                                        </md-input-container>
+
+                                                                                        <md-input-container class="md-block" flex-gt-sm="">
+                                                                                                <label>Client Password</label>
+                                                                                                <input type="text" ng-model="client.password">
+                                                                                        </md-input-container>
+                                                                                        <md-button type="submit" class="md-raised" ng-click="updateClientInfo(client)">Save</md-button>
+                                                                                </div>
+                                                                        </form>
+                                                                        <br>
+                                                                        {% verbatim  %}
+                                                                        {{adminMessage}}
+                                                                        {% endverbatim %}
+                                                                </div>
+                                                        </md-content>
+                                                </p>
                                         </md-content>
                                 </md-tab>
 				{% endif %}

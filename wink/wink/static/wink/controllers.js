@@ -22,6 +22,24 @@ winkControllers.controller('loginController', ['$scope', '$http',
 
 winkControllers.controller('settingsController', ['$scope', '$http',
         function($scope, $http) {
+        $scope.client = {};
+        $http.get('/getWinkLogin').then(function(response){
+					$scope.client.id = response.data.api_id;
+					$scope.client.password = response.data.api_password;
+	});
+        $scope.updateClientInfo = function(client) {
+                        $http({
+                                method: 'POST',
+                                url: '/changeAPI/',
+                                data: { 'id': client.id,
+                                        'password': client.password}
+                                }).then(function successCallback(response) {
+                                        $scope.adminMessage = "Successfully updated client information";
+                                }, function errorCallback(response) {
+                                        $scope.adminMessage = "Failed to update client information";
+
+                        });
+                };
 		$scope.updateWink = function(wink) {
 			$http({
 				method: 'POST',
@@ -45,11 +63,6 @@ winkControllers.controller('registerController', ['$scope', '$http',
 ]);
 
 winkControllers.controller('registerAPIController', ['$scope', '$http',
-        function($scope, $http) {
-        }
-]);
-
-winkControllers.controller('changeAPIController', ['$scope', '$http',
         function($scope, $http) {
         }
 ]);
@@ -90,7 +103,7 @@ winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav, $md
 	$scope.showSettings = function(ev) {
 		$mdDialog.show({
 			controller: DialogController,
-			templateUrl: '/renderSettings', // Rendered through Django first (to add admin if user is admin)
+			templateUrl: '/settings', // Rendered through Django first (to add admin if user is admin)
 			parent: angular.element(document.body),
 			targetEvent: ev,
 			clickOutsideToClose: true
