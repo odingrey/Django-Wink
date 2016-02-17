@@ -69,7 +69,8 @@ winkControllers.controller('registerAPIController', ['$scope', '$http',
 
 
 
-winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $mdMedia) {
+winkControllers.controller('NavCtrl', function($scope, $timeout, $mdSidenav, $mdDialog, $mdMedia, $rootScope) {
+	$rootScope.$mdMedia = $mdMedia;
 	$scope.toggleLeft = buildDelayedToggler('left');
 	/**
 	* Function that operates until the time is up.

@@ -32,7 +32,7 @@
 		<div ng-controller="NavCtrl" class="toolbar" ng-cloak="" flex style="height: 100%">
 			<md-toolbar class="md-theme-indigo">
 				<div class="md-toolbar-tools">
-					<md-button class="md-icon-button" aria-label="Navigation">
+					<md-button class="md-icon-button" aria-label="Navigation" ng-hide="$mdMedia('gt-md')">
 						<md-icon md-svg-icon="img/icons/menu.svg" ng-click="toggleLeft()"></md-icon>
 					</md-button>
 					<h2>
@@ -46,8 +46,8 @@
 
 				</div>
 			</md-toolbar>
-			<section flex layout='row' style="height:100%; width: 33%">
-				<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" flex>
+			<section flex layout='row' style="height:100%">
+				<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" flex='20'>
 					<md-content layout-padding="" ng-controller="LeftCtrl">
 						<md-button ng-click="close()" class="md-primary" hide-gt-md="">
 							Close Sidenav Left
