@@ -29,7 +29,7 @@
     {% endif %}
 {% endif %}
 <div id='loginResponse'></div>
-<form id='loginForm' action="login/" method="post">
+<form id='loginForm' action="/login/" method="post">
 	<p><Label for="username">Username</Label> <input type="text" name="username" value="" size="50" /></p>
 	<p><Label for="password">Password</Label> <input type="password" name="password" value="" size="50" /></p>
 	{% csrf_token %}
