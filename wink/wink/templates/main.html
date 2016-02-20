@@ -1,17 +1,8 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="static/js/wink.js"></script>
-<script type="text/javascript" src="static/js/dhtmlxslider.js"></script>
-<link rel="stylesheet" href="static/js/dhtmlxslider_dhx_skyblue.css">
-<link rel="stylesheet" href="static/js/dhtmlxslider_dhx_web.css">
-
-<script>
-        fillBody();
-</script>
-
+{% verbatim %}
+Hello {{username}}
 
 <div class="bs-component">
-	<img src="static/png/refresh_button.png" alt="Refresh"
+	<img src="/static/png/refresh_button.png" alt="Refresh"
 			onclick="fetchDevices()" />
 	<a id="winkResult"></a>
 	<table id="winkTable">
@@ -22,3 +13,4 @@
 		</tbody>
 	</table>
  </div>
+{% endverbatim %}

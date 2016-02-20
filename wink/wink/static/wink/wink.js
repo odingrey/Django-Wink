@@ -11,7 +11,7 @@ winkApp.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 			when('/', {
-				templateUrl: '/static/wink/templates/main.html',
+				templateUrl: '/main',
 				controller: 'mainController'
 			}).
                         when('/login', {
