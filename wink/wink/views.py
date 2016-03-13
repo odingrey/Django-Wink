@@ -44,7 +44,7 @@ def loginUser(request):
 		            if user.is_active:
 		                login(request, user)
 				return HttpResponseRedirect('/')
-		                return HttpResponse('202') #Accepted
+		       #         return HttpResponse('202') #Accepted
 		            else:
 		                return HttpResponse('403') #Forbidden (IE, account is banned)
 		        else:

@@ -22,8 +22,8 @@ function createRequest() {
 }
 
 function getWinkRow(wink, row) {
-	var keyWinkLength = (Object.keys(wink)[2]).length;
-	var strDeviceType = (Object.keys(wink)[2]);
+	var keyWinkLength = (Object.keys(wink)[3]).length;
+	var strDeviceType = (Object.keys(wink)[3]);
 	strDeviceType = strDeviceType.replace("_id", "s");
 	switch(strDeviceType){
 		case 'light_bulbs':
@@ -276,6 +276,8 @@ function getWinkRow(wink, row) {
 		case 'members':
 			break;
 			
+		case 'uuid':	// Remotes
+			break;
 		default:
 			var cell = document.getElementById("State" + row);
 			var state = document.createElement("img");
