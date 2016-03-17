@@ -50,7 +50,7 @@ def loginUser(request):
 		        else:
 		            return HttpResponse('401') #Unauthorized (IE, bad username and password)
 		else:
-			return render(request, '/login')
+			return render(request, 'login.html')
 
 def getUserInfo(request):
 	user = request.user
